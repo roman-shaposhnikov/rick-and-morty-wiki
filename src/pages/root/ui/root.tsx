@@ -1,3 +1,3 @@
 export function Root() {
-  return <div>Root page</div>
+  return <h1>Root page</h1>
 }
