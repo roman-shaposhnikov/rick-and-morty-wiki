@@ -9,7 +9,7 @@ on:
       - '.github/workflows/*'
 
 jobs:
-  setup:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,20 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{hashFiles('yarn.lock')}}
-
-      - name: Set Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
 
       - name: Lint code
         run: yarn lint
