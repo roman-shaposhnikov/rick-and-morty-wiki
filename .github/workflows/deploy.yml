@@ -35,12 +35,12 @@ jobs:
         run: yarn install
 
       - name: Build app
-        run: yarn build --profile
+        run: yarn build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: dist/
+          path: ~/dist
 
       # Specify runner + deployment step
       - name: Deploy to GitHub Pages
