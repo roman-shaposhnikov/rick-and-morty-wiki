@@ -14,19 +14,26 @@ module.exports = {
     'simple-import-sort',
   ],
   rules: {
+    'no-console': 'warn',
+    curly: 'error',
+    'no-unused-expressions': 'error',
+
+    'import/prefer-default-export': 'off',
+
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+
     'react-refresh/only-export-components': [
       'off',
       { allowConstantExport: true },
     ],
 
-    'no-console': 'warn',
-    curly: 'error',
     'react/jsx-no-useless-fragment': [
       'error',
       { allowExpressions: true },
     ],
-    'no-unused-expressions': 'error',
-    'import/prefer-default-export': 'off',
-    'simple-import-sort/imports': 'error',
   },
 }
