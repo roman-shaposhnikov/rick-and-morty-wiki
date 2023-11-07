@@ -12,6 +12,7 @@ module.exports = {
     'react-refresh',
     'eslint-plugin-react',
     'simple-import-sort',
+    'import',
   ],
   rules: {
     'no-console': 'warn',
