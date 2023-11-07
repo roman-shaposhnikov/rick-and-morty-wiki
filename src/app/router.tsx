@@ -1,8 +1,8 @@
 import { Root } from 'pages/root'
 import { SignUp } from 'pages/signup'
-import { createHashRouter } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 
-export const router = createHashRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Root />,
@@ -12,3 +12,7 @@ export const router = createHashRouter([
     element: <SignUp />,
   },
 ])
+
+export function Router() {
+  return <RouterProvider router={router} />
+}
