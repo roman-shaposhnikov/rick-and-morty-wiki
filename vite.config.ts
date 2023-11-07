@@ -3,10 +3,13 @@ import { defineConfig, loadEnv } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default (params: { mode: string }) => {
-  const env = loadEnv(params.mode, process.cwd(), '')
+  process.env = {
+    ...process.env,
+    ...loadEnv(params.mode, process.cwd(), ''),
+  }
 
   return defineConfig({
     plugins: [react(), tsconfigPaths()],
-    base: env.BASE_PUBLIC_PATH,
+    base: process.env.BASE_PUBLIC_PATH,
   })
 }
