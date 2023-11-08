@@ -4,7 +4,7 @@ import { Credentials, User } from '../interfaces'
 const REGISTERED_USERS_LS_KEY = 'registered-users'
 const CURRENT_USER_ID_LS_KEY = 'current-user-id'
 
-export function signin(creds: Credentials) {
+export async function signin(creds: Credentials) {
   if (shouldSignout()) {
     throw new UserShouldSignout()
   }
@@ -29,7 +29,7 @@ export function signin(creds: Credentials) {
   return user
 }
 
-export function signup(creds: Credentials) {
+export async function signup(creds: Credentials) {
   const string_users = localStorage.getItem(REGISTERED_USERS_LS_KEY)
 
   const users: User[] =
@@ -48,6 +48,6 @@ function shouldSignout() {
   return !!localStorage.getItem(CURRENT_USER_ID_LS_KEY)
 }
 
-export function signout() {
+export async function signout() {
   localStorage.setItem(CURRENT_USER_ID_LS_KEY, '')
 }
