@@ -26,6 +26,8 @@ export async function signin(creds: Credentials) {
     throw new UserNotRegistered()
   }
 
+  localStorage.setItem(CURRENT_USER_ID_LS_KEY, user.id)
+
   return user
 }
 
