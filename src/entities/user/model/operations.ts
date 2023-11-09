@@ -8,6 +8,13 @@ export const signin = createAppThunk<Credentials, User>(
   }
 )
 
+export const signup = createAppThunk<Credentials, User>(
+  'user/signup',
+  async creds => {
+    return authAPI.signup(creds)
+  }
+)
+
 export const signout = createAppThunk('user/signout', async () => {
   return authAPI.signout()
 })
