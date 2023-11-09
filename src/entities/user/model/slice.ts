@@ -1,4 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {
+  createSlice,
+  PayloadAction,
+  SerializedError,
+} from '@reduxjs/toolkit'
 import { User } from 'shared/api/auth'
 
 import { signin, signout } from './operations'
@@ -8,6 +12,7 @@ interface CurrentUser {
   info: {
     id: string
   }
+  error: SerializedError | null
 }
 
 const initialState: CurrentUser = {
@@ -15,6 +20,7 @@ const initialState: CurrentUser = {
   info: {
     id: '',
   },
+  error: null,
 }
 
 export const slice = createSlice({
@@ -36,9 +42,11 @@ export const slice = createSlice({
         state.type = 'user'
         state.info.id = action.payload.id
       })
+      .addCase(signin.rejected, (state, action) => {
+        state.error = action.error
+      })
       .addCase(signout.fulfilled, state => {
-        state.type = 'guest'
-        state.info.id = ''
+        state = initialState
       })
   },
 })
