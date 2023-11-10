@@ -1,9 +1,4 @@
-import {
-  createSlice,
-  PayloadAction,
-  SerializedError,
-} from '@reduxjs/toolkit'
-import { User } from 'shared/api/auth'
+import { createSlice, SerializedError } from '@reduxjs/toolkit'
 
 import { signin, signout } from './operations'
 
