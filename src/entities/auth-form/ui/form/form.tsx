@@ -6,7 +6,7 @@ import type { Credentials } from 'shared/api/auth'
 import * as yup from 'yup'
 
 import { FieldError } from '../error'
-import style from './style.module.css'
+import s from './style.module.css'
 
 type Props = {
   topInputLabel: string
@@ -36,7 +36,7 @@ export function AuthForm(props: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
       <div>
         <Controller
           name='username'
