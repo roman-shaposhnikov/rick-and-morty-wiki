@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom'
 
 import logo from './assets/logo.svg'
-import style from './header.module.css'
+import s from './style.module.css'
 
 export function Header() {
   return (
-    <header className={style.header}>
-      <img
-        className={style.logo}
-        src={logo}
-        alt='rick and morty logo'
-      />
+    <header className={s.header}>
+      <img className={s.logo} src={logo} alt='rick and morty logo' />
       <HeaderMenu />
     </header>
   )
