@@ -30,11 +30,12 @@ export function Form() {
   )
 }
 
+// TODO: move to modal & set timer to close
 export function FormError(props: { err: SerializedError | null }) {
   if (props.err?.name === USER_NOT_REGISTERED) {
     return (
       <Alert severity='info'>
-        You are not registered! Please follow to Sign Up Page.
+        You are not registered! Please follow to Sign Up page.
       </Alert>
     )
   }
