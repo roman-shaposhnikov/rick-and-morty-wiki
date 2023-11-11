@@ -1,6 +1,6 @@
 import type { FieldError as FE } from 'react-hook-form'
 
-import style from './style.module.css'
+import s from './style.module.css'
 
 export function FieldError(props: { error?: FE; touched?: boolean }) {
   if (props.error && props.touched) {
@@ -9,7 +9,7 @@ export function FieldError(props: { error?: FE; touched?: boolean }) {
       .splice(1)
       .join(' ')
 
-    return <div className={style.fieldError}>{errorMessage}</div>
+    return <div className={s.fieldError}>{errorMessage}</div>
   } else {
     return null
   }
