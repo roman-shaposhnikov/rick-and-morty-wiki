@@ -7,7 +7,11 @@ import { useSelector } from 'react-redux'
 import { USER_NOT_REGISTERED } from 'shared/api/auth'
 import { useAppDispatch } from 'shared/lib/redux'
 
-export function Form() {
+type Props = {
+  handleSignedIn: () => void
+}
+
+export function Form(props: Props) {
   const dispatch = useAppDispatch()
 
   const authError = useSelector(userModel.selectors.error)
@@ -24,6 +28,8 @@ export function Form() {
         formValidator={authValidator.credentials}
         handleSubmit={creds => {
           dispatch(userModel.operations.signin(creds))
+            .unwrap()
+            .then(props.handleSignedIn)
         }}
       />
     </>
