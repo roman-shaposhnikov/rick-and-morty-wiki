@@ -3,8 +3,8 @@ type RootState = import('app/providers/store.tsx').RootState
 type AppDispatch = import('app/providers/store.tsx').AppDispatch
 
 type AppCli = import('app/cli.ts').AppCli
+type Cli = import('app/cli.ts').Cli
 
 interface Window {
-  __store__: Store
   appCli: AppCli
 }
