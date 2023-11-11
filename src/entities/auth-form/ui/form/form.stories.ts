@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { authValidator } from '../../../data-validator'
 import { AuthForm } from './form'
 
 const meta = {
