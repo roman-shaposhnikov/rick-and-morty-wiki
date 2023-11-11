@@ -1,10 +1,7 @@
 import './styles/global.css'
 
-import { initializeAppCli } from './cli.ts'
-import { Router } from './router.tsx'
+import { Router } from './router'
 
 export function App() {
-  initializeAppCli()
-
   return <Router />
 }
