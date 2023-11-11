@@ -3,7 +3,7 @@ import { authValidator } from 'entities/data-validator'
 import { userModel } from 'entities/user'
 import { Credentials } from 'shared/api/auth'
 
-export async function signup(creds: Credentials) {
+export async function signup(this: Cli, creds: Credentials) {
   try {
     await authValidator.credentials.validate(creds, {
       abortEarly: false,
@@ -15,10 +15,8 @@ export async function signup(creds: Credentials) {
     return
   }
 
-  const { dispatch } = window.__store__
-
   try {
-    const user = await dispatch(
+    const user = await this.dispatch(
       userModel.operations.signup(creds)
     ).unwrap()
     console.log(user)
