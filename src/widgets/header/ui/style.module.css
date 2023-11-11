@@ -9,3 +9,8 @@
 .logo {
   height: 50px;
 }
+
+.menu {
+  display: flex;
+  gap: 10px;
+}
