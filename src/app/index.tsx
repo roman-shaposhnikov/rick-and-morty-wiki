@@ -1,4 +1,6 @@
-import { App } from './app.tsx'
-import { withProviders } from './providers/index.ts'
+import { App } from './app'
+import { withProviders } from './providers'
+
+export { initializeAppCli } from './cli'
 
 export default withProviders(App)
