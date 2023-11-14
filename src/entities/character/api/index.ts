@@ -1,1 +1,1 @@
-export { api as characterApi } from './api'
+export { api as characterApi, TEMPLATE_CHARACTER } from './api'
