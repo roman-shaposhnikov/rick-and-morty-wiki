@@ -1,3 +1,12 @@
+import { CharacterPage } from 'entities/character'
+import { Navigate, useParams } from 'react-router-dom'
+
 export function Character() {
-  return <h1>Character page</h1>
+  const { id } = useParams()
+
+  return id ? (
+    <CharacterPage id={+id} key={id} />
+  ) : (
+    <Navigate to={'/'} />
+  )
 }
