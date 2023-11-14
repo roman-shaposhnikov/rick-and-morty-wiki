@@ -18,6 +18,24 @@ const extractEpisodeInfo = (e: Episode): EpisodeInfo => ({
   episode: e.episode,
 })
 
+const extractIdFromUrl = (url: string): number => {
+  return +url.slice(BASE_URL_EPISODE.length)
+}
+
+const transformUrlsToIds = (urls: string[]): number[] => {
+  return urls.map(extractIdFromUrl)
+}
+
+function transformEpisodes(
+  response: Episode[] | Episode
+): EpisodeInfo[] {
+  if (Array.isArray(response)) {
+    return response.map(extractEpisodeInfo)
+  }
+
+  return [extractEpisodeInfo(response)]
+}
+
 export const BASE_URL_EPISODE = `${BASE_URL}/episode`
 
 export const api = createApi({
@@ -30,13 +48,18 @@ export const api = createApi({
       query: ids => ({
         url: `/${Array.isArray(ids) ? ids.toString() : ids}`,
       }),
-      transformResponse(response: Episode[] | Episode) {
-        if (Array.isArray(response)) {
-          return response.map(e => extractEpisodeInfo(e))
-        }
+      transformResponse: transformEpisodes,
+    }),
 
-        return [extractEpisodeInfo(response)]
-      },
+    getEpisodesByUrls: build.query<EpisodeInfo[], string[] | string>({
+      query: ids => ({
+        url: `/${
+          Array.isArray(ids)
+            ? transformUrlsToIds(ids).toString()
+            : extractIdFromUrl(ids)
+        }`,
+      }),
+      transformResponse: transformEpisodes,
     }),
   }),
 })

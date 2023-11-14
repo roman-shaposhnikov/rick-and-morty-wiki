@@ -5,11 +5,7 @@ import {
   CharacterStatus,
   TEMPLATE_CHARACTER,
 } from 'entities/character'
-import {
-  BASE_URL_EPISODE,
-  episodeApi,
-  EpisodeInfo,
-} from 'entities/episode'
+import { episodeApi, EpisodeInfo } from 'entities/episode'
 
 import tmpImage from './ghost.jpg'
 import s from './style.module.css'
@@ -20,10 +16,8 @@ export function Page({ id }: { id: number }) {
     isLoading: isLoadingInfo,
   } = characterApi.useGetCharacterQuery(Number(id))
 
-  const ids = info.episode.map(e => +e.slice(BASE_URL_EPISODE.length))
-
   const { data: episodes = [], isLoading: isLoadingEpisodes } =
-    episodeApi.useGetEpisodesQuery(ids, {
+    episodeApi.useGetEpisodesByUrlsQuery(info.episode, {
       skip: isLoadingInfo,
     })
 
