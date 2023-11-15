@@ -1,5 +1,5 @@
 import { Button, TextField } from '@mui/material'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import s from './style.module.css'
@@ -18,23 +18,23 @@ export function Line(props: Props) {
     setQuery(props.query)
   }
 
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    navigate(`/search?name=${query}&page=1`)
+  }
+
   return (
-    <div className={s.container}>
+    <form onSubmit={handleSubmit} className={s.container}>
       <TextField
         sx={{ width: '500px' }}
-        value={query}
+        value={query ?? ''}
         onChange={e => {
           setQuery(e.target.value)
         }}
       />
-      <Button
-        variant='contained'
-        onClick={() => {
-          navigate(`/search?name=${query}`)
-        }}
-      >
+      <Button variant='contained' disabled={!query} type='submit'>
         Search
       </Button>
-    </div>
+    </form>
   )
 }
