@@ -1,4 +1,5 @@
 import { characterApi, CharacterCard } from 'entities/character'
+import { SearchLine } from 'features/search'
 
 import s from './style.module.css'
 
@@ -7,7 +8,8 @@ export function Root() {
 
   return (
     <main className={s.main}>
-      <div className={s.content}>
+      <SearchLine />
+      <div className={'cardsLayer'}>
         {data?.map(c => (
           <CharacterCard key={c.id} info={c} />
         ))}
