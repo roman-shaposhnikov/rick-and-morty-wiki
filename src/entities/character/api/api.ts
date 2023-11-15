@@ -2,12 +2,18 @@ import {
   createApi,
   fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
-import { BASE_URL, Character } from 'shared/api/data'
+import { BASE_URL, Character, Info } from 'shared/api/data'
 import { randomIntArrayInRange } from 'shared/lib/array'
 
 function generateRandomIdsString(count: number) {
   // max=826 -- the biggest character id returned by the api
   return randomIntArrayInRange(1, 826, count).toString()
+}
+
+export function transformURLSearchParamsToRecord(
+  params: URLSearchParams
+): Record<string, string> {
+  return Object.fromEntries(Array.from(params.entries()))
 }
 
 export const BASE_URL_CHARACTER = `${BASE_URL}/character`
@@ -27,6 +33,16 @@ export const TEMPLATE_CHARACTER: Character = {
   created: '',
 }
 
+export const TEMPLATE_INFO: Info<Character[]> = {
+  info: {
+    count: 0,
+    pages: 0,
+    next: null,
+    prev: null,
+  },
+  results: [],
+}
+
 export const api = createApi({
   reducerPath: 'character/api',
   baseQuery: fetchBaseQuery({
@@ -42,6 +58,18 @@ export const api = createApi({
       query: id => ({
         url: `/${id}`,
       }),
+    }),
+    getMatchingCharacters: build.query<
+      Info<Character[]>,
+      Record<string, string>
+    >({
+      query: query => ({
+        url: `/`,
+        params: query,
+      }),
+      transformErrorResponse: () => {
+        return TEMPLATE_INFO
+      },
     }),
   }),
 })
