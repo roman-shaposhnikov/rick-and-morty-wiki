@@ -25,3 +25,21 @@ h2 {
 .textGray {
   color: #aba398;
 }
+
+.cardsLayer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.absCentered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
