@@ -1,13 +1,8 @@
-import { Pagination } from '@mui/material'
-import {
-  characterApi,
-  CharacterCard,
-  TEMPLATE_INFO,
-} from 'entities/character'
-import { Character, Info } from 'shared/api/data'
+import { characterApi, TEMPLATE_INFO } from 'entities/character'
 import { Loader } from 'shared/ui'
 
 import { SearchLine } from '..'
+import { SearchResults } from './search-results'
 import s from './style.module.css'
 
 interface Props {
@@ -47,41 +42,5 @@ export function Page(props: Props) {
       <SearchLine query={props.query.name} />
       {content}
     </main>
-  )
-}
-
-function SearchResults({
-  info,
-  page,
-  setPage,
-}: {
-  info: Info<Character[]>
-  page: number
-  setPage: (page: number) => void
-}) {
-  return (
-    <div className={s.results}>
-      <Pagination
-        count={info.info.pages}
-        shape='rounded'
-        page={page}
-        onChange={(_, page) => {
-          setPage(page)
-        }}
-      />
-      <div className={'cardsLayer'}>
-        {info.results.map(c => (
-          <CharacterCard key={c.id} info={c} />
-        ))}
-      </div>
-      <Pagination
-        count={info.info.pages}
-        shape='rounded'
-        page={page}
-        onChange={(_, page) => {
-          setPage(page)
-        }}
-      />
-    </div>
   )
 }
