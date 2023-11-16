@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  width: fit-content;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+}
+
+.suggestList {
+  position: absolute;
+  bottom: -390px;
+  left: 0;
+  z-index: 9;
+}

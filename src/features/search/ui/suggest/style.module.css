@@ -1,0 +1,44 @@
+.list {
+  position: relative;
+
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+
+  width: 580px;
+  height: 350px;
+  overflow: auto;
+
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  background: white;
+}
+
+.suggest {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 2px;
+  margin-right: 5px;
+}
+
+.suggest > div {
+  display: flex;
+  align-items: center;
+}
+
+.suggest img {
+  width: 60px;
+  border-radius: 0.5rem;
+  margin-right: 20px;
+}
+
+.suggest:hover .name {
+  color: blue;
+}
+.suggest:hover {
+  outline: blue solid 2px;
+}
