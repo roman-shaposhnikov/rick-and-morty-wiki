@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { USER_NOT_REGISTERED } from 'shared/api/auth'
 import { useAppDispatch } from 'shared/lib/redux'
 
-type Props = {
+interface Props {
   handleSignedIn: () => void
 }
 

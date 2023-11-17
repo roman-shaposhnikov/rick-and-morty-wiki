@@ -3,7 +3,7 @@ import { authValidator } from 'entities/data-validator'
 import { userModel } from 'entities/user'
 import { useAppDispatch } from 'shared/lib/redux'
 
-type Props = {
+interface Props {
   handleSignedUp: () => void
 }
 

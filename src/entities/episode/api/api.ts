@@ -4,7 +4,7 @@ import {
 } from '@reduxjs/toolkit/query/react'
 import { BASE_URL, Episode } from 'shared/api/data'
 
-export type EpisodeInfo = {
+export interface EpisodeInfo {
   id: number
   name: string
   airDate: string
