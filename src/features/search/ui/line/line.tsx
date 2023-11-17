@@ -33,12 +33,14 @@ export function Line(props: Props) {
 
   return (
     <>
-      <div
-        className='absCentered'
-        onClick={() => {
-          setIsFocused(false)
-        }}
-      />
+      {!isFocused ? null : (
+        <div
+          className='absCentered'
+          onClick={() => {
+            setIsFocused(false)
+          }}
+        />
+      )}
       <div className={s.container}>
         <form onSubmit={handleSubmit} className={s.line}>
           <TextField
