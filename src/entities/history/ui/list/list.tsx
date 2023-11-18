@@ -10,7 +10,7 @@ export function List() {
   return (
     <ul className={s.list}>
       {history.map(i => (
-        <Item {...i} />
+        <Item key={i.timestamp} {...i} />
       ))}
     </ul>
   )
