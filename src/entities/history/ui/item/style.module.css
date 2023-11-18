@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 60px;
+  width: 500px;
+  padding: 0 10px 0 20px;
+
+  border-radius: 0.5rem;
+  background: var(--bg-color-items);
+  color: white;
+}
+
+.item:hover {
+  outline: blue solid 2px;
+}
