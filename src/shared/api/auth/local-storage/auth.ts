@@ -7,6 +7,7 @@ import { createUserWithCreds } from '../lib'
 import {
   addUser,
   findUserByCreds,
+  getCurrentUserId,
   setCurrentUserId,
   shouldSignout,
 } from './lib'
@@ -49,4 +50,8 @@ export async function signup(creds: Credentials) {
 
 export async function signout() {
   setCurrentUserId('')
+}
+
+export async function getUserStatus() {
+  return { isSignedIn: shouldSignout(), id: getCurrentUserId() }
 }
