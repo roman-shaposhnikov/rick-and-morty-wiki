@@ -23,6 +23,9 @@ export const slice = createSlice({
     favoriteItemRemoved(state, action: PayloadAction<number>) {
       state.items = state.items.filter(i => i.id !== action.payload)
     },
+    userSignedOut() {
+      return initialState
+    },
   },
   extraReducers(builder) {
     builder
