@@ -23,13 +23,23 @@
 .content {
   display: flex;
   flex-flow: column;
-  gap: 18px;
+  justify-content: space-between;
 
   padding: 0.75rem;
+}
+
+.info {
+  display: flex;
+  flex-flow: column;
+  gap: 18px;
 }
 
 .section {
   display: flex;
   flex-flow: column;
   gap: 5px;
+}
+
+.actions {
+  display: flex;
 }
