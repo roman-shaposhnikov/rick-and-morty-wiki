@@ -1,8 +1,9 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
 import { favoritesModel } from 'entities/favorites'
+import { userModel } from 'entities/user'
 import { favoritesAPI } from 'shared/api/favorites'
 
-const favoritesMiddleware = createListenerMiddleware()
+export const favoritesMiddleware = createListenerMiddleware()
 
 favoritesMiddleware.startListening({
   actionCreator: favoritesModel.actions.addedToFavorites,
@@ -32,4 +33,18 @@ favoritesMiddleware.startListening({
   },
 })
 
-export const favoritesMiddlewares = [favoritesMiddleware.middleware]
+favoritesMiddleware.startListening({
+  actionCreator: userModel.operations.signin.fulfilled,
+  effect: async (_, api) => {
+    const dispatch = api.dispatch as AppDispatch
+
+    dispatch(favoritesModel.operations.getFavorites())
+  },
+})
+
+favoritesMiddleware.startListening({
+  actionCreator: userModel.operations.signout.fulfilled,
+  effect: async (_, api) => {
+    api.dispatch(favoritesModel.actions.userSignedOut())
+  },
+})
