@@ -59,6 +59,18 @@ export const api = createApi({
         url: `/${id}`,
       }),
     }),
+    getCharacters: build.query<Character[], number[]>({
+      query: ids => ({
+        url: `/${ids.toString() || 0}`,
+      }),
+      transformResponse(result: Character | Character[]) {
+        if (!Array.isArray(result)) {
+          return [result]
+        }
+
+        return result
+      },
+    }),
     getMatchingCharacters: build.query<
       Info<Character[]>,
       Record<string, string>
