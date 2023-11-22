@@ -1,27 +1,60 @@
-# React + TypeScript + Vite
+## Реализованные требования:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### **1 уровень (обязательный - необходимый минимум)**
 
-Currently, two official plugins are available:
+- [x] Реализованы **Требования к функциональности**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [x] Для хранения учетных записей пользователей, их Избранного и Истории поиска, используем **LocalStorage**
 
-## Expanding the ESLint configuration
+**React**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [x] **Пишем функциональные компоненты c хуками** в приоритете над классовыми.
+- [x] Есть разделение на **умные и глупые компоненты**
+- [x] Есть **рендеринг списков**
+- [x] Реализована хотя бы одна **форма**
+- [ ] Есть применение **предохранителя**
+- [ ] Есть хотя бы один **кастомный хук**
+- [ ] Есть применение **Контекст API**
+- [x] Поиск не должен триггерить много запросов к серверу (**debounce**)
+- [x] Есть применение **lazy + Suspense**
+- [x] Хотя бы несколько компонентов используют **PropTypes**
 
-- Configure the top-level `parserOptions` property like this:
+**Redux**
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- [x] Используем **Modern Redux with Redux Toolkit**
+- [x] Используем **слайсы**
+- [x] Есть хотя бы одна **кастомная мидлвара** или **createListenerMiddleware**
+- [x] Используется **RTK Query**
+- [x] Используется **Transforming Responses**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### **2 уровень (необязательный)**
+
+- [x] Использование **TypeScript**
+- [ ] Подключен **storybook** и созданы два, три сториса с knobs, которые показывают разные состояния компонента
+- [ ] Использование **Firebase** для учетных записей пользователей и их Избранного и Истории поиска
+- [ ] **Низная связанность клиентского кода**, использующего апи кода, работающего с внешним стором.
+  - **LS** (+2 балла)
+  - **LS + Firebase** (+4 балла)
+- [x] Настроен **CI/CD**
+- [ ] Реализована **виртуализация списков**
+- [x] Используются **мемоизированные селекторы** (createSelector)
+- [ ] Используется **нормализованная структура стейта** (createEntityAdapter)
+- [ ] Проведена **оптимизация приложения**
+- [ ] **Feature Flags.** Реализовать фичу “Поделиться в телеграм”, закрытую под фича флагом
+- [ ] Добавить **тесты** через jest, react-testing-library или Playwright
+<details>
+<summary>Сценарии <b>E2E тестов</b>, которые надо реализовать:</summary>
+    - [] **Гость. Поиск. Единица информации.**
+    - [] **Пользователь. Поиск. Единица информации. Избранное.**
+</details>
+
+- [ ] Связь UI и бизнес-логики построена не через команды, а через **события**
+- [ ] **Project Console API [за этот пункт можно заработать весомое кол-во доп. баллов]**
+<details>
+<summary>Функционал:</summary>
+- [] Показать список Единиц информации.
+- [] Поиск Единиц информации.
+- [] Отобразить подробно Единицу информации.
+- [] Зарегистрироваться.
+- [] Добавить в избранное, удалить из избранного, будучи зарегистрированным.
+</details>
