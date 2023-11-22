@@ -1,5 +1,4 @@
 import { Character } from 'pages/character'
-import { Favorites } from 'pages/favorites'
 import { Root } from 'pages/root'
 import { Search } from 'pages/search'
 import { SignIn } from 'pages/signin'
@@ -13,6 +12,10 @@ import { withAuthentication } from './providers/auth'
 
 const History = withAuthentication(
   lazy(() => import('pages/history'))
+)
+
+const Favorites = withAuthentication(
+  lazy(() => import('pages/favorites'))
 )
 
 export function Router() {

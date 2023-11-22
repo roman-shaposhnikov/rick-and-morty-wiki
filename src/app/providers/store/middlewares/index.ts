@@ -1,7 +1,13 @@
-import { historyMiddlewares } from './history'
-import { rtkApiMiddlewares } from './rtk-api'
+import { characterApi } from 'entities/character'
+import { episodeApi } from 'entities/episode'
+
+import { favoritesMiddleware } from './favorites'
+import { historyMiddleware } from './history'
 
 export const middlewares = [
-  ...rtkApiMiddlewares,
-  ...historyMiddlewares,
+  historyMiddleware.middleware,
+  favoritesMiddleware.middleware,
+
+  characterApi.middleware,
+  episodeApi.middleware,
 ]
