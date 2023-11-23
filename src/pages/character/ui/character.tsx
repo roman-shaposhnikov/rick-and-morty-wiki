@@ -1,12 +1,8 @@
 import { CharacterPage } from 'entities/character'
-import { Navigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 export function Character() {
-  const { id } = useParams()
+  const { id = 0 } = useParams()
 
-  return id ? (
-    <CharacterPage id={+id} key={id} />
-  ) : (
-    <Navigate to={'/'} />
-  )
+  return <CharacterPage id={+id} key={id} />
 }

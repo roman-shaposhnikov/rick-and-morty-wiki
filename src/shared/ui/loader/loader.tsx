@@ -1,13 +1,9 @@
-import { CircularProgress, SxProps, Theme } from '@mui/material'
+import { CircularProgress } from '@mui/material'
 
-export function Loader({ style }: { style?: SxProps<Theme> } = {}) {
+export function Loader() {
   return (
-    <CircularProgress
-      color='primary'
-      sx={{
-        width: '30px',
-        ...style,
-      }}
-    />
+    <div className='absCentered'>
+      <CircularProgress color='primary' size={100} thickness={9} />
+    </div>
   )
 }
