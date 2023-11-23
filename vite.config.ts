@@ -10,7 +10,6 @@ export default (params: { mode: string }) => {
 
   return defineConfig({
     plugins: [react(), tsconfigPaths()],
-    // TODO: вынести в env
     base: '/rick-and-morty-wiki/',
   })
 }
