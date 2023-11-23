@@ -41,38 +41,32 @@ export function Line(props: Props) {
   }
 
   return (
-    <>
-      {!isFocused ? null : (
-        <div
-          className='absCentered'
-          onClick={() => {
-            setIsFocused(false)
+    <div className={s.container}>
+      <form onSubmit={handleSubmit} className={s.line}>
+        <TextField
+          sx={{ width: '500px' }}
+          value={query ?? ''}
+          onChange={e => {
+            setQuery(e.target.value)
+          }}
+          onFocus={() => {
+            setIsFocused(true)
+          }}
+          onBlur={() => {
+            setTimeout(() => {
+              setIsFocused(false)
+            }, 200)
           }}
         />
+        <Button variant='contained' disabled={!query} type='submit'>
+          Search
+        </Button>
+      </form>
+      {!isSuggestVisible ? null : (
+        <div className={s.suggestList}>
+          <SuggestsList query={debouncedQuery} />
+        </div>
       )}
-      <div className={s.container}>
-        <form onSubmit={handleSubmit} className={s.line}>
-          <TextField
-            sx={{ width: '500px' }}
-            value={query ?? ''}
-            onChange={e => {
-              setQuery(e.target.value)
-            }}
-            onFocus={() => {
-              setIsFocused(true)
-            }}
-          />
-          <Button variant='contained' disabled={!query} type='submit'>
-            Search
-          </Button>
-        </form>
-        {!isSuggestVisible ? null : (
-          // TODO: добавить LayoutEffect чтобы позиционировать SuggestsList, исходя из его высоты
-          <div className={s.suggestList}>
-            <SuggestsList query={debouncedQuery} />
-          </div>
-        )}
-      </div>
-    </>
+    </div>
   )
 }
