@@ -14,7 +14,7 @@ export function getUserFavorites(userId: string): Item[] {
   return favorites[userId] ?? []
 }
 
-export function saveItem(item: Item, userId: string) {
+export function saveItem(item: Item, userId: string): Item {
   const favorites = getFavorites()
   favorites[userId] ??= []
 
@@ -25,7 +25,7 @@ export function saveItem(item: Item, userId: string) {
   return item
 }
 
-export function removeItem(itemId: number, userId: string) {
+export function removeItem(itemId: number, userId: string): void {
   const favorites = getFavorites()
 
   if (!favorites[userId]) {
