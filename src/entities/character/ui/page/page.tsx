@@ -1,4 +1,3 @@
-import { CircularProgress } from '@mui/material'
 import cn from 'classnames'
 import {
   characterApi,
@@ -10,6 +9,7 @@ import { userModel } from 'entities/user'
 import { FavoriteButton } from 'features/add-to-favorite'
 import PT from 'prop-types'
 import { useSelector } from 'react-redux'
+import { Loader } from 'shared/ui'
 
 import { EpisodesList } from './episodes-list'
 import tmpImage from './ghost.jpg'
@@ -29,11 +29,7 @@ export function Page({ id }: { id: number }) {
     })
 
   if (isLoadingInfo) {
-    return (
-      <div className={s.loader}>
-        <CircularProgress />
-      </div>
-    )
+    return <Loader />
   }
 
   return (
@@ -63,9 +59,7 @@ export function Page({ id }: { id: number }) {
       </div>
       <h3>Appeared in:</h3>
       {isLoadingEpisodes ? (
-        <div className={s.loader}>
-          <CircularProgress />
-        </div>
+        <Loader />
       ) : (
         <EpisodesList items={episodes} />
       )}
