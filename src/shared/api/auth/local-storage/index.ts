@@ -1,1 +1,1 @@
-export * as lsAuthAPI from './auth'
+export * as lsAuth from './auth'
