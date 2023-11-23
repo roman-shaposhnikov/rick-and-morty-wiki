@@ -36,7 +36,6 @@ export function Form(props: Props) {
   )
 }
 
-// TODO: move to modal & set timer to close
 export function FormError(props: { err: SerializedError | null }) {
   if (props.err?.name === USER_NOT_REGISTERED) {
     return (
