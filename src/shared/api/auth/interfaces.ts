@@ -8,15 +8,17 @@ export interface User {
   creds: Credentials
 }
 
+export interface UserStatus {
+  isSignedIn: boolean
+  id: string
+}
+
 type Authenticate = (creds: Credentials) => Promise<User>
 
 type SignIn = Authenticate
 type SignUp = Authenticate
 type SignOut = () => Promise<void>
-type GetUserStatus = () => Promise<{
-  isSignedIn: boolean
-  id: string
-}>
+type GetUserStatus = () => Promise<UserStatus>
 
 export interface AuthAPI {
   signin: SignIn
