@@ -4,7 +4,12 @@ import { Search } from 'pages/search'
 import { SignIn } from 'pages/signin'
 import { SignUp } from 'pages/signup'
 import { lazy, Suspense } from 'react'
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom'
 import { Loader } from 'shared/ui'
 import { Header } from 'widgets/header'
 
@@ -20,7 +25,7 @@ const Favorites = withAuthentication(
 
 export function Router() {
   return (
-    <HashRouter>
+    <BrowserRouter basename={'/rick-and-morty-wiki/'}>
       <Header />
 
       <Suspense
@@ -44,6 +49,6 @@ export function Router() {
           </Route>
         </Routes>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
