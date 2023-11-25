@@ -28,13 +28,7 @@ export function Router() {
     <BrowserRouter basename={'/rick-and-morty-wiki/'}>
       <Header />
 
-      <Suspense
-        fallback={
-          <div className='absCentered'>
-            <Loader />
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path='/' element={<Root />} />
           <Route path='/signup' element={<SignUp />} />
