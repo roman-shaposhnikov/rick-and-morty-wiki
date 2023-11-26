@@ -1,8 +1,6 @@
-import { Character, Info } from './interfaces'
+import { ResponseInfo } from './interfaces'
 
-export function selectCurrentPage({
-  info,
-}: Info<Character[]>): number {
+export function selectCurrentPage(info: ResponseInfo): number {
   if (info.next) {
     const nextUrl = new URL(info.next)
 

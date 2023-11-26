@@ -18,14 +18,13 @@ export async function search(
     characterApi.endpoints.getMatchingCharacters.initiate(query)
   )
     .unwrap()
-    .then(resp => {
-      console.log(resp.info)
+    .then(({ info, results }) => {
       console.table({
-        count: resp.info.count,
-        pages: resp.info.pages,
-        currentPage: selectCurrentPage(resp),
+        count: info.count,
+        pages: info.pages,
+        currentPage: selectCurrentPage(info),
       })
-      console.log(resp.results)
+      console.log(results)
     })
     .catch(err => {
       console.log(err.data.error)

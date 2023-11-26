@@ -78,19 +78,21 @@ export interface ApiResponse<T> {
   data: T
 }
 
+export interface ResponseInfo {
+  /** The length of the response */
+  count: number
+  /** The amount of pages */
+  pages: number
+  /** Link to the next page (if it exists) */
+  next: string | null
+  /** Link to the previous page (if it exists) */
+  prev: string | null
+}
+
 export interface Info<T> {
   /**
    * The API will automatically paginate the responses. You will receive up to `20` documents per page.
    */
-  info: {
-    /** The length of the response */
-    count: number
-    /** The amount of pages */
-    pages: number
-    /** Link to the next page (if it exists) */
-    next: string | null
-    /** Link to the previous page (if it exists) */
-    prev: string | null
-  }
+  info: ResponseInfo
   results: T
 }
