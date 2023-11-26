@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { characterApi } from 'entities/character'
 import { historyModel } from 'entities/history'
-import { Character, Info } from 'shared/api/data'
+import { selectCurrentPage } from 'shared/api/data'
 
 export async function search(
   this: Cli,
@@ -23,21 +23,11 @@ export async function search(
       console.table({
         count: resp.info.count,
         pages: resp.info.pages,
-        currentPage: getCurrentPage(resp),
+        currentPage: selectCurrentPage(resp),
       })
       console.log(resp.results)
     })
     .catch(err => {
       console.log(err.data.error)
     })
-}
-
-function getCurrentPage({ info }: Info<Character[]>): number {
-  if (info.next) {
-    const nextUrl = new URL(info.next)
-
-    return parseInt(nextUrl.searchParams.get('page')!) - 1
-  }
-
-  return info.pages
 }
