@@ -1,4 +1,5 @@
 import { characterCli } from 'entities/character'
+import { addToFavoriteCli } from 'features/add-to-favorite'
 import { searchCli } from 'features/search'
 import { signinCli } from 'features/signin'
 import { signoutCli } from 'features/signout'
@@ -20,6 +21,7 @@ const appCli = configureCli({ dispatch })
 appCli.auth = configureCli(appCli, signinCli, signupCli, signoutCli)
 appCli.search = searchCli.search
 appCli.character = configureCli(appCli, characterCli)
+appCli.favorites = configureCli(appCli, addToFavoriteCli)
 
 export type AppCli = typeof appCli
 
