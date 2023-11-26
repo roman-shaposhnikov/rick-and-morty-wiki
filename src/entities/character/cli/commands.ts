@@ -13,13 +13,13 @@ export async function show(this: Cli, id: number) {
     const character = await this.dispatch(
       getCharacter.initiate(id)
     ).unwrap()
+
     printCharacterToConsole(character)
 
     const episodes = await this.dispatch(
       getEpisodesByUrls.initiate(character.episode)
     ).unwrap()
 
-    console.log('Appeared in:')
     printEpisodesToConsole(episodes)
   } catch (err: any) {
     console.log(err.data.error!)
@@ -45,6 +45,8 @@ export async function showAll(this: Cli, page: number = 1) {
 }
 
 function printCharacterToConsole(info: Character) {
+  console.log('%cInfo:', 'color: brown; font-size: large')
+
   console.table({
     name: info.name,
     status: info.status,
@@ -58,7 +60,12 @@ function printCharacterToConsole(info: Character) {
 }
 
 function printEpisodesToConsole(episodes: EpisodeInfo[]) {
-  console.table(episodes, ['episode', 'name', 'airDate'])
+  console.log('%cAppeared in:', 'color: brown; font-size: large')
+
+  const normalizedData = Object.fromEntries(
+    episodes.map(e => [e.id, e])
+  )
+  console.table(normalizedData, ['episode', 'name', 'airDate'])
 }
 
 function printCharacterListToConsole(characters: Character[]) {
