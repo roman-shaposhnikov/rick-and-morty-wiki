@@ -1,1 +1,1 @@
-export { SuggestsList } from './suggest'
+export { List as SuggestsList } from './list'
