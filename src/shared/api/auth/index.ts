@@ -1,6 +1,11 @@
 import { AuthAPI } from './interfaces'
 import { lsAuthAPI } from './local-storage'
 
+export {
+  USER_ALREADY_EXISTS,
+  USER_NOT_REGISTERED,
+  USER_SHOULD_SIGNOUT,
+} from './errors'
 export type { Credentials, User } from './interfaces'
 
 // TODO: подумать над await import('./local-storage'), чтобы не импортить все модули
