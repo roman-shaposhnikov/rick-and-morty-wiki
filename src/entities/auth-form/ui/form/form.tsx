@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import { FieldError } from '../error'
 import s from './style.module.css'
 
-type Props = {
+interface Props {
   topInputLabel: string
   bottomInputLabel: string
 
