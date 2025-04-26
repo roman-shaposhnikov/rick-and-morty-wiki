@@ -8,8 +8,10 @@ export type User = {
   creds: Credentials
 }
 
-type SignIn = (creds: Credentials) => User
-type SignUp = (creds: Credentials) => User
+export type Authenticate = (creds: Credentials) => User
+
+type SignIn = Authenticate
+type SignUp = Authenticate
 type SignOut = () => void
 
 export interface AuthAPI {
