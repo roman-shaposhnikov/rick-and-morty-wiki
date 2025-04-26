@@ -10,6 +10,14 @@
 .header {
   display: flex;
   gap: 50px;
+
+  background: var(--bg-color-page);
+  border-radius: 0.5rem;
+  color: var(--text-color);
+}
+
+.actions {
+  display: flex;
 }
 
 .loader {

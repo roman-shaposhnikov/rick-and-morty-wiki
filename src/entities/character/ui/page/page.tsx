@@ -6,6 +6,7 @@ import {
   TEMPLATE_CHARACTER,
 } from 'entities/character'
 import { episodeApi } from 'entities/episode'
+import { FavoriteButton } from 'features/add-to-favorite'
 import PT from 'prop-types'
 
 import { EpisodesList } from './episodes-list'
@@ -50,6 +51,10 @@ export function Page({ id }: { id: number }) {
             <div>Origin Location: {info.origin.name}</div>
             <div>Current Location: {info.location.name}</div>
           </div>
+
+          <ul className={s.actions}>
+            <FavoriteButton id={info.id} />
+          </ul>
         </section>
       </div>
       <h3>Appeared in:</h3>
