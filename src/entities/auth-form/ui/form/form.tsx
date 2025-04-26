@@ -43,6 +43,7 @@ export function AuthForm(props: Props) {
           control={control}
           render={({ field }) => (
             <TextField
+              className={s.input}
               type={props.topInputType}
               label={props.topInputLabel}
               variant='outlined'
@@ -62,6 +63,7 @@ export function AuthForm(props: Props) {
           control={control}
           render={({ field }) => (
             <TextField
+              className={s.input}
               type={props.bottomInputType}
               label={props.bottomInputLabel}
               variant='outlined'
@@ -75,7 +77,7 @@ export function AuthForm(props: Props) {
         />
       </div>
 
-      <Button type='submit' variant='contained'>
+      <Button className={s.button} type='submit' variant='contained'>
         {props.buttonText}
       </Button>
     </form>
