@@ -2,7 +2,7 @@ import { createListenerMiddleware } from '@reduxjs/toolkit'
 import { historyModel } from 'entities/history'
 import { historyAPI } from 'shared/api/history'
 
-const historyMiddleware = createListenerMiddleware()
+export const historyMiddleware = createListenerMiddleware()
 
 historyMiddleware.startListening({
   actionCreator: historyModel.actions.searchRequest,
@@ -32,4 +32,4 @@ historyMiddleware.startListening({
   },
 })
 
-export const historyMiddlewares = [historyMiddleware.middleware]
+// TODO: clear history when user signed out

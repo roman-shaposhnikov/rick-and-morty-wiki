@@ -6,13 +6,18 @@ import {
   TEMPLATE_CHARACTER,
 } from 'entities/character'
 import { episodeApi } from 'entities/episode'
+import { userModel } from 'entities/user'
+import { FavoriteButton } from 'features/add-to-favorite'
 import PT from 'prop-types'
+import { useSelector } from 'react-redux'
 
 import { EpisodesList } from './episodes-list'
 import tmpImage from './ghost.jpg'
 import s from './style.module.css'
 
 export function Page({ id }: { id: number }) {
+  const isSignedIn = useSelector(userModel.selectors.isSignedIn)
+
   const {
     data: info = TEMPLATE_CHARACTER,
     isLoading: isLoadingInfo,
@@ -50,6 +55,10 @@ export function Page({ id }: { id: number }) {
             <div>Origin Location: {info.origin.name}</div>
             <div>Current Location: {info.location.name}</div>
           </div>
+
+          <ul className={s.actions}>
+            {isSignedIn ? <FavoriteButton id={info.id} /> : null}
+          </ul>
         </section>
       </div>
       <h3>Appeared in:</h3>
