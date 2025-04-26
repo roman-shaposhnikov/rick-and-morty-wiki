@@ -4,3 +4,5 @@ export const isSignedIn = (state: RootState) =>
   state.user.type === 'user'
 
 export const error = (state: RootState) => state.user.error
+export const isAuthenticating = (state: RootState) =>
+  state.user.isAuthenticating
