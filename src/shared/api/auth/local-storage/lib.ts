@@ -38,3 +38,7 @@ export function findUserByCreds(creds: Credentials) {
 export function setCurrentUserId(id: string) {
   localStorage.setItem(CURRENT_USER_ID_LS_KEY, id)
 }
+
+export function getCurrentUserId() {
+  return localStorage.getItem(CURRENT_USER_ID_LS_KEY) ?? ''
+}
