@@ -1,11 +1,9 @@
 /* eslint-disable no-console */
 import { userModel } from 'entities/user'
 
-export async function signout() {
-  const { dispatch } = window.__store__
-
+export async function signout(this: Cli) {
   try {
-    await dispatch(userModel.operations.signout()).unwrap()
+    await this.dispatch(userModel.operations.signout()).unwrap()
   } catch (err) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
