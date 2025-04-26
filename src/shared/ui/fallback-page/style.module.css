@@ -2,14 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
+}
+.main h3 {
+  text-align: center;
 }
 
 .link {
-  display: block;
-  height: 60px;
-
-  background-color: aqua;
+  background-color: #69ffff;
   border-radius: 0.5rem;
-
-  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
 }
