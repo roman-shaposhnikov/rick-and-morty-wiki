@@ -37,7 +37,7 @@ export const slice = createSlice({
       })
       .addCase(signout.fulfilled, () => initialState)
       .addCase(init.fulfilled, (state, action) => {
-        if (!action.payload.result) {
+        if (action.payload.isSignedIn) {
           state.type = 'user'
           state.info.id = action.payload.id
         }

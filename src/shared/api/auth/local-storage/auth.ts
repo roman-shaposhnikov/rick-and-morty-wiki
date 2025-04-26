@@ -52,6 +52,6 @@ export async function signout() {
   setCurrentUserId('')
 }
 
-export async function shouldSignin() {
-  return { result: !shouldSignout(), id: getCurrentUserId() }
+export async function getUserStatus() {
+  return { isSignedIn: shouldSignout(), id: getCurrentUserId() }
 }
