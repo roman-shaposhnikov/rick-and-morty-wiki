@@ -3,9 +3,10 @@ import { Root } from 'pages/root'
 import { Search } from 'pages/search'
 import { SignIn } from 'pages/signin'
 import { SignUp } from 'pages/signup'
-import { lazy, Suspense } from 'react'
+import { lazy, ReactNode, Suspense } from 'react'
 import {
   BrowserRouter,
+  HashRouter,
   Navigate,
   Route,
   Routes,
@@ -23,9 +24,19 @@ const Favorites = withAuthentication(
   lazy(() => import('pages/favorites'))
 )
 
+const RouterProvider = (props: { children: ReactNode }) => {
+  return import.meta.env.VITE_IN_PRODUCTION ? (
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      {props.children}
+    </BrowserRouter>
+  ) : (
+    <HashRouter>{props.children}</HashRouter>
+  )
+}
+
 export function Router() {
   return (
-    <BrowserRouter>
+    <RouterProvider>
       <Header />
 
       <Suspense fallback={<Loader />}>
@@ -43,6 +54,6 @@ export function Router() {
           </Route>
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </RouterProvider>
   )
 }
