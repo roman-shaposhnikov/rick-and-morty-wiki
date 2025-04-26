@@ -39,11 +39,18 @@ export interface EpisodeFilter
   episode?: string
 }
 
+export type CharacterStatus = 'Dead' | 'Alive' | 'unknown'
+export type CharacterGender =
+  | 'Female'
+  | 'Male'
+  | 'Genderless'
+  | 'unknown'
+
 export interface Character extends ResourceBase {
-  status: 'Dead' | 'Alive' | 'unknown'
+  status: CharacterStatus
   species: string
   type: string
-  gender: 'Female' | 'Male' | 'Genderless' | 'unknown'
+  gender: CharacterGender
   origin: CharacterLocation
   location: CharacterLocation
   image: string
