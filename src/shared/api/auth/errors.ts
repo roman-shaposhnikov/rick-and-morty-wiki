@@ -15,7 +15,7 @@ export class UserAlreadyExists extends Error {
 export class UserShouldSignout extends Error {
   constructor() {
     super(
-      'The current user must sign out before the new user sign in'
+      'The current user must sign out before the new user will be authenticated'
     )
     this.name = 'UserShouldSignout'
   }
