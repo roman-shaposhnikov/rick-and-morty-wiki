@@ -3,33 +3,36 @@ import { favoritesModel } from 'entities/favorites'
 import { userModel } from 'entities/user'
 import { favoritesAPI } from 'shared/api/favorites'
 
+import { AppStartListening } from './lib'
+
 export const favoritesMiddleware = createListenerMiddleware()
 
-favoritesMiddleware.startListening({
+export const startAppListening =
+  favoritesMiddleware.startListening as AppStartListening
+
+startAppListening({
   actionCreator: favoritesModel.actions.addedToFavorites,
   effect: async (action, api) => {
-    const state = api.getState() as RootState
+    const state = api.getState()
     const userId: string = state.user.info.id
 
     favoritesAPI.save(action.payload, userId)
   },
 })
 
-favoritesMiddleware.startListening({
+startAppListening({
   actionCreator: favoritesModel.actions.favoriteItemRemoved,
   effect: async (action, api) => {
-    const state = api.getState() as RootState
+    const state = api.getState()
     const userId: string = state.user.info.id
 
     favoritesAPI.remove(action.payload, userId)
   },
 })
 
-favoritesMiddleware.startListening({
+startAppListening({
   actionCreator: userModel.operations.signin.fulfilled,
   effect: async (_, api) => {
-    const dispatch = api.dispatch as AppDispatch
-
-    dispatch(favoritesModel.operations.getFavorites())
+    api.dispatch(favoritesModel.operations.getFavorites())
   },
 })
