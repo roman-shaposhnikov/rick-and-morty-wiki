@@ -1,4 +1,4 @@
-import { Action, Middleware } from '@reduxjs/toolkit'
+import { Action, AnyAction, Middleware } from '@reduxjs/toolkit'
 import { favoritesModel } from 'entities/favorites'
 import { historyModel } from 'entities/history'
 
@@ -13,13 +13,14 @@ const authProtected = [
   favoritesActions.favoriteItemRemoved,
 ].map((action: Action) => action.type)
 
-const authProtect: Middleware = api => next => action => {
-  const isActionProtected = authProtected.includes(action.type)
-  const isUserSignedIn = !!api.getState().user.info.id
+const authProtect: Middleware<NonNullable<never>, RootState> =
+  api => next => (action: AnyAction) => {
+    const isActionProtected = authProtected.includes(action.type)
+    const isUserSignedIn = !!api.getState().user.info.id
 
-  return isActionProtected && !isUserSignedIn
-    ? undefined
-    : next(action)
-}
+    return isActionProtected && !isUserSignedIn
+      ? undefined
+      : next(action)
+  }
 
 export const protectMiddlewares = [authProtect]

@@ -14,7 +14,7 @@ export const dispatch = store.dispatch
 export const getState = store.getState
 
 export type Store = typeof store
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch
 
 export const withStore = withContext(Provider, { store })
