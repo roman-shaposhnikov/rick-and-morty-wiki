@@ -13,11 +13,7 @@ export function Favorites() {
   const isLoading = useSelector(favoritesModel.selectors.isLoading)
 
   if (isLoading) {
-    return (
-      <div className='absCentered'>
-        <Loader />
-      </div>
-    )
+    return <Loader />
   }
 
   return (

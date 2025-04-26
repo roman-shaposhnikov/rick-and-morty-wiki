@@ -12,9 +12,7 @@ export function List(props: Props) {
   )
 
   return isLoading ? (
-    <div className='absCentered'>
-      <Loader />
-    </div>
+    <Loader />
   ) : (
     <ul>
       {data.map(c => (

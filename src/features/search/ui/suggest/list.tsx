@@ -17,11 +17,7 @@ export const List = memo((props: { query: string }) => {
   let content
 
   if (isFetching) {
-    content = (
-      <div className='absCentered'>
-        <Loader />
-      </div>
-    )
+    content = <Loader />
   } else if (isError) {
     content = (
       <div className='absCentered'>

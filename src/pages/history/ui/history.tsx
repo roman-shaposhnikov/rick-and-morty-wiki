@@ -12,9 +12,5 @@ export function History() {
     dispatch(historyModel.operations.getHistory())
   }, [dispatch])
 
-  return isLoading ? (
-    <div className='absCentered'>{<Loader />}</div>
-  ) : (
-    <HistoryList />
-  )
+  return isLoading ? <Loader /> : <HistoryList />
 }
