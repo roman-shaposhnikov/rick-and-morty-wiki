@@ -1,4 +1,7 @@
-import { UserNotRegistered, UserShouldSignout } from '../errors'
+import {
+  UserNotRegisteredError,
+  UserShouldSignoutError,
+} from '../errors'
 import { Credentials } from '../interfaces'
 import { createUserWithCreds } from '../lib'
 import {
@@ -10,13 +13,13 @@ import {
 
 export async function signin(creds: Credentials) {
   if (shouldSignout()) {
-    throw new UserShouldSignout()
+    throw new UserShouldSignoutError()
   }
 
   const user = findUserByCreds(creds)
 
   if (user === undefined) {
-    throw new UserNotRegistered()
+    throw new UserNotRegisteredError()
   }
 
   setCurrentUserId(user.id)
@@ -26,7 +29,7 @@ export async function signin(creds: Credentials) {
 
 export async function signup(creds: Credentials) {
   if (shouldSignout()) {
-    throw new UserShouldSignout()
+    throw new UserShouldSignoutError()
   }
 
   const user = findUserByCreds(creds)
