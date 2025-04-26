@@ -1,7 +1,9 @@
 import { signinCli } from 'features/signin'
+import { signoutCli } from 'features/signout'
+import { signupCli } from 'features/signup'
 
 const appCli = {
-  auth: { ...signinCli },
+  auth: Object.assign({}, signinCli, signupCli, signoutCli),
 }
 
 export type AppCli = typeof appCli
