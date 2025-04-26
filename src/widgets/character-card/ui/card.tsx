@@ -12,14 +12,20 @@ export function Card(props: Character) {
   const { isTelegramShareEnabled } = useFeatureFlags()
 
   const shareUrl = encodeURI(
-    `${window.location.origin}/rick-and-morty-wiki/character/${props.id}`
+    `${window.location.origin}${import.meta.env.BASE_URL}character/${
+      props.id
+    }`
   )
 
   return (
     <CharacterCard info={props}>
       {isSignedIn ? <FavoriteButton id={props.id} /> : null}
       {isTelegramShareEnabled ? (
-        <TelegramShareButton url={shareUrl} text='Share' />
+        <TelegramShareButton
+          url={shareUrl}
+          text='Share'
+          description={props.name}
+        />
       ) : null}
     </CharacterCard>
   )

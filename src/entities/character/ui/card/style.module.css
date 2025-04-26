@@ -10,12 +10,12 @@
   color: var(--text-color);
 }
 
-.wrapper a {
+.wrapper > a {
   text-decoration: none;
   color: inherit;
 }
 
-.wrapper a:hover {
+.wrapper > a:hover {
   text-decoration: underline;
   color: var(--text-color-highlight);
 }
