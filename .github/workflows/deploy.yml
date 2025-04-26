@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['main']
+    paths-ignore: ['README.md']
 
 # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
 permissions:
