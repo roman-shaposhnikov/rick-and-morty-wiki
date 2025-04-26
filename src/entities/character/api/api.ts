@@ -5,7 +5,7 @@ import {
 import { BASE_URL, Character, Info } from 'shared/api/data'
 import { randomIntArrayInRange } from 'shared/lib/array'
 
-function generateRandomIdsString(count: number) {
+function generateRandomIdsString(count: number): string {
   // max=826 -- the biggest character id returned by the api
   return randomIntArrayInRange(1, 826, count).toString()
 }
