@@ -1,5 +1,6 @@
-import { characterApi, CharacterCard } from 'entities/character'
+import { characterApi } from 'entities/character'
 import { Loader } from 'shared/ui'
+import { CharacterCard } from 'widgets/character-card'
 
 interface Props {
   favoritesIds: number[]
@@ -17,7 +18,7 @@ export function List(props: Props) {
   ) : (
     <ul>
       {data.map(c => (
-        <CharacterCard info={c} />
+        <CharacterCard key={c.id} {...c} />
       ))}
     </ul>
   )
