@@ -31,7 +31,7 @@ export function Page(props: Props) {
     content = (
       <SearchResults
         info={data}
-        page={+props.query.page}
+        page={+props.query.page ?? '1'}
         setPage={props.setPage}
       />
     )
