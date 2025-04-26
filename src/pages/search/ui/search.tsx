@@ -7,12 +7,12 @@ export function Search() {
 
   const query = transformURLSearchParamsToRecord(params)
 
-  const nextPage = (page: number) => {
+  const setPage = (page: number) => {
     setParams(prev => ({
       name: prev.get('name') || '',
       page: `${page}`,
     }))
   }
 
-  return <SearchPage query={query} nextPage={nextPage} />
+  return <SearchPage query={query} setPage={setPage} />
 }
