@@ -5,8 +5,10 @@ import {
   CharacterStatus,
   TEMPLATE_CHARACTER,
 } from 'entities/character'
-import { episodeApi, EpisodeInfo } from 'entities/episode'
+import { episodeApi } from 'entities/episode'
+import PT from 'prop-types'
 
+import { EpisodesList } from './episodes-list'
 import tmpImage from './ghost.jpg'
 import s from './style.module.css'
 
@@ -62,23 +64,6 @@ export function Page({ id }: { id: number }) {
   )
 }
 
-function EpisodeItem(props: EpisodeInfo) {
-  return (
-    <li style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <span>
-        {props.episode} - {props.name}
-      </span>
-      <span>{props.airDate}</span>
-    </li>
-  )
-}
-
-function EpisodesList({ items }: { items: EpisodeInfo[] }) {
-  return (
-    <ul>
-      {items.map(e => (
-        <EpisodeItem key={e.id} {...e} />
-      ))}
-    </ul>
-  )
+Page.propTypes = {
+  id: PT.number.isRequired,
 }
