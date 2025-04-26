@@ -1,6 +1,6 @@
 import { Pagination } from '@mui/material'
-import { CharacterCard } from 'entities/character'
 import { Character, Info } from 'shared/api/data'
+import { CharacterCard } from 'widgets/character-card'
 
 import s from './style.module.css'
 
@@ -25,7 +25,7 @@ export function SearchResults({
       />
       <div className={'cardsLayer'}>
         {info.results.map(c => (
-          <CharacterCard key={c.id} info={c} />
+          <CharacterCard key={c.id} {...c} />
         ))}
       </div>
       <Pagination
