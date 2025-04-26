@@ -24,7 +24,6 @@ export function Line(props: Props) {
 
   const debouncedQuery = useDebounce(query, 500)
 
-  // const isSuggestVisible = [debouncedQuery].every(Boolean)
   const isSuggestVisible = !!debouncedQuery && isFocused
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -57,6 +56,7 @@ export function Line(props: Props) {
           </Button>
         </form>
         {!isSuggestVisible ? null : (
+          // TODO: добавить LayoutEffect чтобы позиционировать SuggestsList, исходя из его высоты
           <div className={s.suggestList}>
             <SuggestsList query={debouncedQuery} />
           </div>
