@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { favoritesModel } from 'entities/favorites'
 
 export async function add(this: Cli, id: number) {
