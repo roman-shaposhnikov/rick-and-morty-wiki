@@ -1,1 +1,1 @@
-export { withContext } from './withContext.tsx'
+export { withContext } from './with-context'
