@@ -14,7 +14,7 @@ export function getUserHistory(userId: string): Item[] {
   return history[userId] ?? []
 }
 
-export function saveItem(item: Item, userId: string) {
+export function saveItem(item: Item, userId: string): Item {
   const history = getHistory()
   history[userId] ??= []
 
@@ -25,7 +25,7 @@ export function saveItem(item: Item, userId: string) {
   return item
 }
 
-export function removeItem(timestamp: number, userId: string) {
+export function removeItem(timestamp: number, userId: string): void {
   const history = getHistory()
 
   if (!history[userId]) {
