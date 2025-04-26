@@ -9,7 +9,11 @@ import { HashRouter, Route, Routes } from 'react-router-dom'
 import { Loader } from 'shared/ui'
 import { Header } from 'widgets/header'
 
-const History = lazy(() => import('pages/history'))
+import { withAuthentication } from './providers/auth'
+
+const History = withAuthentication(
+  lazy(() => import('pages/history'))
+)
 
 export function Router() {
   return (
