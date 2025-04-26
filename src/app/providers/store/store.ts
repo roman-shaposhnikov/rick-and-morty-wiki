@@ -1,12 +1,12 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { withContext } from 'shared/lib/hocs'
 
 import { middlewares } from './middlewares'
-import { reducers } from './reducers'
+import { rootReducer } from './reducers'
 
 const store = configureStore({
-  reducer: combineReducers(reducers),
+  reducer: rootReducer,
   middleware: getDefault => getDefault().concat(...middlewares),
 })
 

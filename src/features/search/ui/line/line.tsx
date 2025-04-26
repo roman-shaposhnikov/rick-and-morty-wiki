@@ -1,7 +1,9 @@
 import { Button, TextField } from '@mui/material'
+import { historyModel } from 'entities/history'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDebounce } from 'shared/lib/hooks'
+import { useAppDispatch } from 'shared/lib/redux'
 
 import { SuggestsList } from '../suggest'
 import s from './style.module.css'
@@ -12,6 +14,7 @@ interface Props {
 
 export function Line(props: Props) {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const [query, setQuery] = useState(props.query)
   const [prevQuery, setPrevQuery] = useState(props.query)
@@ -29,6 +32,12 @@ export function Line(props: Props) {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     navigate(`/search?name=${query}&page=1`)
+    dispatch(
+      historyModel.actions.searchRequest({
+        query: { name: query! },
+        timestamp: Date.now(),
+      })
+    )
   }
 
   return (
