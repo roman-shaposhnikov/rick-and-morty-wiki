@@ -34,6 +34,13 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Cache node-modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{hashFiles('yarn.lock')}}
+
       - name: Build app
         run: yarn build --profile
       - name: Fix permissions
@@ -60,6 +67,13 @@ jobs:
 
     # Specify runner + deployment step
     steps:
+      - uses: actions/checkout@v3
+      - name: Cache node-modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{hashFiles('yarn.lock')}}
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
