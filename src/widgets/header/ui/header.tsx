@@ -3,23 +3,21 @@ import { Button } from '@mui/material'
 import { userModel } from 'entities/user'
 import { SignOutButton } from 'features/signout'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import logo from './assets/logo.png'
 import s from './style.module.css'
 
 export function Header() {
-  const navigate = useNavigate()
   return (
     <header className={s.header}>
-      <img
-        className={s.logo}
-        src={logo}
-        alt='rick and morty logo'
-        onClick={() => {
-          navigate('/')
-        }}
-      />
+      <Link to={'/'}>
+        <img
+          className={s.logo}
+          src={logo}
+          alt='rick and morty logo'
+        />
+      </Link>
       <HeaderMenu />
     </header>
   )
