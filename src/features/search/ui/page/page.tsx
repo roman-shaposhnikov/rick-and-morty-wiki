@@ -35,7 +35,7 @@ export function Page(props: Props) {
 
   return (
     <main className={s.main}>
-      <SearchLine query={props.query.name} />
+      <SearchLine query={props.query.name} key={props.query.name} />
       {content}
     </main>
   )
