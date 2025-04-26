@@ -1,37 +1,38 @@
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import { favoritesModel } from 'entities/favorites'
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'shared/lib/redux'
 
 interface Props {
   id: number
-  isFavorite: boolean
 }
 
-export function Button(props: Props) {
-  const [isFavorite, setIsFavorite] = useState(props.isFavorite)
+export function Button({ id }: Props) {
+  const isFavorite = useSelector(
+    favoritesModel.selectors.isFavorite(id)
+  )
   const dispatch = useAppDispatch()
 
+  function handleClick() {
+    if (isFavorite) {
+      dispatch(favoritesModel.actions.favoriteItemRemoved(id))
+      return
+    }
+
+    const item = { id, timestamp: Date.now() }
+    dispatch(favoritesModel.actions.addedToFavorites(item))
+  }
+
   return (
-    <IconButton>
+    <IconButton
+      sx={{ color: 'var(--text-color)' }}
+      onClick={handleClick}
+    >
       {isFavorite ? (
-        <Favorite
-          onClick={() => {
-            setIsFavorite(false)
-            dispatch(
-              favoritesModel.actions.favoriteItemRemoved(props.id)
-            )
-          }}
-        />
+        <Favorite sx={{ color: 'inherit' }} />
       ) : (
-        <FavoriteBorder
-          onClick={() => {
-            setIsFavorite(true)
-            const item = { id: props.id, timestamp: Date.now() }
-            dispatch(favoritesModel.actions.addedToFavorites(item))
-          }}
-        />
+        <FavoriteBorder sx={{ color: 'inherit' }} />
       )}
     </IconButton>
   )
