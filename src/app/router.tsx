@@ -25,7 +25,7 @@ const Favorites = withAuthentication(
 
 export function Router() {
   return (
-    <BrowserRouter basename={'/rick-and-morty-wiki/'}>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Header />
 
       <Suspense fallback={<Loader />}>

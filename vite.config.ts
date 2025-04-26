@@ -10,7 +10,7 @@ export default (params: { mode: string }) => {
 
   return defineConfig({
     plugins: [react(), tsconfigPaths()],
-    base: '/rick-and-morty-wiki/',
+    base: process.env.VITE_BASE_PATH || '/rick-and-morty-wiki/',
     build: {
       target: 'esnext',
     },
