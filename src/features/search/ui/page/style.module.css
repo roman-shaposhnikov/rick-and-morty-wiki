@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-flow: column;
+  gap: 50px;
+}
+
+.results {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
