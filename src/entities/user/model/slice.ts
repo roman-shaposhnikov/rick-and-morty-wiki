@@ -26,16 +26,7 @@ const initialState: CurrentUser = {
 export const slice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    signedIn(state, action: PayloadAction<User>) {
-      state.type = 'user'
-      state.info.id = action.payload.id
-    },
-    signedOut(state) {
-      state.type = 'guest'
-      state.info.id = ''
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(signin.fulfilled, (state, action) => {
