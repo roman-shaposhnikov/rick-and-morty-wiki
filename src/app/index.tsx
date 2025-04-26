@@ -1,6 +1,8 @@
+import React from 'react'
 import { RouterProvider } from 'react-router-dom'
-import { router } from './router.tsx'
+
 import { withProviders } from './providers/index.ts'
+import { router } from './router.tsx'
 
 function App() {
   return <RouterProvider router={router} />

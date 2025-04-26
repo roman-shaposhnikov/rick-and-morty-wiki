@@ -11,7 +11,7 @@ module.exports = {
   plugins: [
     'react-refresh',
     'eslint-plugin-react',
-    'eslint-plugin-import',
+    'simple-import-sort',
   ],
   rules: {
     'react-refresh/only-export-components': [
@@ -27,20 +27,6 @@ module.exports = {
     ],
     'no-unused-expressions': 'error',
     'import/prefer-default-export': 'off',
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-          'type',
-        ],
-      },
-    ],
+    'simple-import-sort/imports': 'error',
   },
 }

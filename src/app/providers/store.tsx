@@ -1,6 +1,6 @@
-import { Provider } from 'react-redux'
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { withContext } from 'app/hocs/withContext'
+import { Provider } from 'react-redux'
 
 export const store = configureStore({
   reducer: combineReducers({}),
