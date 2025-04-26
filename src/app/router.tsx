@@ -26,11 +26,11 @@ const Favorites = withAuthentication(
 
 const RouterProvider = (props: { children: ReactNode }) => {
   return import.meta.env.VITE_IN_PRODUCTION ? (
+    <HashRouter>{props.children}</HashRouter>
+  ) : (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       {props.children}
     </BrowserRouter>
-  ) : (
-    <HashRouter>{props.children}</HashRouter>
   )
 }
 
