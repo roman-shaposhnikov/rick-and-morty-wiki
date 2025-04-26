@@ -8,11 +8,11 @@ export type User = {
   creds: Credentials
 }
 
-export type Authenticate = (creds: Credentials) => User
+export type Authenticate = (creds: Credentials) => Promise<User>
 
 type SignIn = Authenticate
 type SignUp = Authenticate
-type SignOut = () => void
+type SignOut = () => Promise<void>
 
 export interface AuthAPI {
   signin: SignIn
