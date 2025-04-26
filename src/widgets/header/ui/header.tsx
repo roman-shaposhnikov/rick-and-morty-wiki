@@ -41,7 +41,7 @@ function UserMenu() {
       <Link to={'/favorites'}>
         <Favorite />
       </Link>
-      <Link to={'/favorites'}>
+      <Link to={'/history'}>
         <History />
       </Link>
       <SignOutButton />
