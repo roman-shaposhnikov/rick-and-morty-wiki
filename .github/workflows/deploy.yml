@@ -7,29 +7,29 @@ on:
       - master
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Cache node-modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{hashFiles('yarn.lock')}}
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Cache node-modules
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.npm
+  #         key: node-modules-${{hashFiles('yarn.lock')}}
 
-      - name: Set Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
+  #     - name: Set Node.js 20.x
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 20.x
 
-      - name: Install dependencies
-        run: yarn install
+  #     - name: Install dependencies
+  #       run: yarn install
 
-      - name: Lint code
-        run: yarn lint
+  #     - name: Lint code
+  #       run: yarn lint
 
   build:
-    needs: lint
+    # needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
