@@ -1,1 +1,2 @@
-export { useFeatureFlags, withFeatureFlags } from './provider'
+export { getFlags } from './api'
+export type { FeatureFlags } from './interfaces'
