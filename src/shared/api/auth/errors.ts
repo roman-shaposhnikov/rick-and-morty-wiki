@@ -6,14 +6,6 @@ export class UserNotRegisteredError extends Error {
   }
 }
 
-export const USER_ALREADY_EXISTS = 'UserAlreadyExists'
-export class UserAlreadyExistsError extends Error {
-  constructor() {
-    super('The user is already registered, just sign in')
-    this.name = USER_ALREADY_EXISTS
-  }
-}
-
 export const USER_SHOULD_SIGNOUT = 'UserShouldSignout'
 export class UserShouldSignoutError extends Error {
   constructor() {
