@@ -71,9 +71,15 @@ export const api = createApi({
         return result
       },
     }),
+    getAllCharacters: build.query<Info<Character[]>, number>({
+      query: page => ({
+        url: `/`,
+        params: { page },
+      }),
+    }),
     getMatchingCharacters: build.query<
       Info<Character[]>,
-      Record<string, string>
+      Record<string, string | number>
     >({
       query: query => ({
         url: `/`,
