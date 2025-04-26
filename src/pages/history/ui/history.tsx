@@ -8,6 +8,7 @@ export function History() {
   const dispatch = useAppDispatch()
   const isLoading = useSelector(historyModel.selectors.isLoading)
 
+  // OPTIMIZE: перенести диспатч в Route loader
   useLayoutEffect(() => {
     dispatch(historyModel.operations.getHistory())
   }, [dispatch])
