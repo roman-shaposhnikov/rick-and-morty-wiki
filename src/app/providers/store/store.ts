@@ -1,12 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { userModel } from 'entities/user'
 import { Provider } from 'react-redux'
 import { withContext } from 'shared/lib/hocs'
 
+import { middlewares } from './middlewares'
+import { reducers } from './reducers'
+
 const store = configureStore({
-  reducer: combineReducers({
-    user: userModel.reducer,
-  }),
+  reducer: combineReducers(reducers),
+  middleware: getDefault => getDefault().concat(...middlewares),
 })
 
 export const dispatch = store.dispatch

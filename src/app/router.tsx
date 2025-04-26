@@ -20,7 +20,11 @@ export function Router() {
         <Route path='/favorites' element={<Favorites />} />
         <Route path='/history' element={<History />} />
         <Route path='/search' element={<Search />} />
-        <Route path='/character/:id' element={<Character />} />
+
+        <Route path='/character' element={<Character />}>
+          <Route index element={<Character />} />
+          <Route path=':id' element={<Character />} />
+        </Route>
       </Routes>
     </HashRouter>
   )

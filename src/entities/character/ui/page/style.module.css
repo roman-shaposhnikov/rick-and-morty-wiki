@@ -1,0 +1,25 @@
+.main {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.main img {
+  border-radius: 0.5rem;
+}
+
+.header {
+  display: flex;
+  gap: 50px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
