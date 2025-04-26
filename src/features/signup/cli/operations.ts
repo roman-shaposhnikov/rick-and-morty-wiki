@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { authValidator } from 'entities/dataValidator'
+import { authValidator } from 'entities/data-validator'
 import { userModel } from 'entities/user'
 import { Credentials } from 'shared/api/auth'
 
