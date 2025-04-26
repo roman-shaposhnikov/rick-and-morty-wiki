@@ -1,3 +1,4 @@
+import { searchCli } from 'features/search'
 import { signinCli } from 'features/signin'
 import { signoutCli } from 'features/signout'
 import { signupCli } from 'features/signup'
@@ -16,6 +17,7 @@ function configureCli(
 const appCli = configureCli({ dispatch })
 
 appCli.auth = configureCli(appCli, signinCli, signupCli, signoutCli)
+appCli.search = searchCli.search
 
 export type AppCli = typeof appCli
 
