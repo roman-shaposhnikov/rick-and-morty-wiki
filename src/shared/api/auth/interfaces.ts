@@ -8,7 +8,7 @@ export type User = {
   creds: Credentials
 }
 
-export type Authenticate = (creds: Credentials) => Promise<User>
+type Authenticate = (creds: Credentials) => Promise<User>
 
 type SignIn = Authenticate
 type SignUp = Authenticate
