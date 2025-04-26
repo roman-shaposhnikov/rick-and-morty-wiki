@@ -51,7 +51,7 @@
 - [x] Использование **TypeScript**
 - [x] Подключен **storybook** и созданы два, три сториса с knobs, которые показывают разные состояния компонента | [AuthForm](https://github.com/roman-dector/rick-and-morty-wiki/blob/main/src/entities/auth-form/ui/form/form.stories.ts), [TelegramShareButton](https://github.com/roman-dector/rick-and-morty-wiki/blob/main/src/features/share-in-telegram/ui/button.stories.ts)
 - [ ] ~~Использование **Firebase** для учетных записей пользователей и их Избранного и Истории поиска~~
-- [x] **Низная связанность клиентского кода**, использующего апи кода, работающего с внешним стором.
+- [x] **Низная связанность клиентского кода**, использующего апи кода, работающего с внешним стором
 - [ ] ~~Настроен **CI/CD**~~
 - [ ] ~~Реализована **виртуализация списков**~~
 
