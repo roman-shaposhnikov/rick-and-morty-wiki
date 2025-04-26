@@ -21,7 +21,8 @@ export function Item(item: HistoryItem) {
       <span>{item.query.name}</span>
       <IconButton
         color='inherit'
-        onClick={() => {
+        onClick={e => {
+          e.stopPropagation()
           dispatch(
             historyModel.actions.historyItemRemoved(item.timestamp)
           )
