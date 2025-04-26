@@ -2,7 +2,7 @@ import s from './style.module.css'
 
 export function Page() {
   const rootPath = encodeURI(
-    `${window.location.origin}/rick-and-morty-wiki/`
+    `${window.location.origin}${import.meta.env.BASE_URL}`
   )
 
   return (
