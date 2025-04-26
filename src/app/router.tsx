@@ -25,7 +25,7 @@ const Favorites = withAuthentication(
 
 export function Router() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter>
       <Header />
 
       <Suspense fallback={<Loader />}>
