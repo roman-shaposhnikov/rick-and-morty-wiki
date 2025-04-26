@@ -9,7 +9,7 @@
 
   border-radius: 0.5rem;
   background: var(--bg-color-items);
-  color: white;
+  color: var(--text-color) !important;
 
   cursor: pointer;
 }
