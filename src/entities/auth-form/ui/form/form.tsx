@@ -40,6 +40,7 @@ export function AuthForm(props: Props) {
       <div>
         <Controller
           name='username'
+          defaultValue=''
           control={control}
           render={({ field }) => (
             <TextField
@@ -47,6 +48,7 @@ export function AuthForm(props: Props) {
               type={props.topInputType}
               label={props.topInputLabel}
               variant='outlined'
+              autoComplete='on'
               {...field}
             />
           )}
@@ -60,6 +62,7 @@ export function AuthForm(props: Props) {
       <div>
         <Controller
           name='password'
+          defaultValue=''
           control={control}
           render={({ field }) => (
             <TextField
@@ -67,6 +70,7 @@ export function AuthForm(props: Props) {
               type={props.bottomInputType}
               label={props.bottomInputLabel}
               variant='outlined'
+              autoComplete='on'
               {...field}
             />
           )}
