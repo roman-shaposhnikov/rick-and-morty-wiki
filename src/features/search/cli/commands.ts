@@ -9,7 +9,7 @@ export async function search(
   page: number = 1
 ) {
   this.dispatch(
-    historyModel.actions.searchRequest({
+    historyModel.actions.searchRequested({
       query: { name, page },
       timestamp: Date.now(),
     })

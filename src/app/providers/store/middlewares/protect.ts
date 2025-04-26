@@ -6,7 +6,7 @@ const historyActions = historyModel.actions
 const favoritesActions = favoritesModel.actions
 
 const authProtected = [
-  historyActions.searchRequest,
+  historyActions.searchRequested,
   historyActions.historyItemRemoved,
 
   favoritesActions.addedToFavorites,

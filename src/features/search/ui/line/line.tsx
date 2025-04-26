@@ -33,7 +33,7 @@ export function Line(props: Props) {
     e.preventDefault()
     navigate(`/search?name=${query}&page=1`)
     dispatch(
-      historyModel.actions.searchRequest({
+      historyModel.actions.searchRequested({
         query: { name: query! },
         timestamp: Date.now(),
       })

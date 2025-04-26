@@ -17,7 +17,7 @@ export const slice = createSlice({
   name: 'entities/history',
   initialState: initialState,
   reducers: {
-    searchRequest(state, action: PayloadAction<HistoryItem>) {
+    searchRequested(state, action: PayloadAction<HistoryItem>) {
       state.items.push(action.payload)
     },
     historyItemRemoved(state, action: PayloadAction<number>) {
