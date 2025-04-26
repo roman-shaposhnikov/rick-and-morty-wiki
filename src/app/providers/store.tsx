@@ -1,9 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { userModel } from 'entities/user'
 import { Provider } from 'react-redux'
 import { withContext } from 'shared/lib/hocs'
 
 export const store = configureStore({
-  reducer: combineReducers({}),
+  reducer: combineReducers({
+    user: userModel.reducer,
+  }),
 })
 
 export type Store = typeof store
