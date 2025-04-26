@@ -33,10 +33,3 @@ favoritesMiddleware.startListening({
     dispatch(favoritesModel.operations.getFavorites())
   },
 })
-
-favoritesMiddleware.startListening({
-  actionCreator: userModel.operations.signout.fulfilled,
-  effect: async (_, api) => {
-    api.dispatch(favoritesModel.actions.userSignedOut())
-  },
-})

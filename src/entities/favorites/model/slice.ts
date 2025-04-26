@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { FavoritesItem } from 'shared/api/favorites'
+import { userSignedOut } from 'shared/lib/redux'
 
 import { getFavorites } from './operations'
 
@@ -23,12 +24,10 @@ export const slice = createSlice({
     favoriteItemRemoved(state, action: PayloadAction<number>) {
       state.items = state.items.filter(i => i.id !== action.payload)
     },
-    userSignedOut() {
-      return initialState
-    },
   },
   extraReducers(builder) {
     builder
+      .addCase(userSignedOut, () => initialState)
       .addCase(getFavorites.fulfilled, (state, action) => {
         state.items = action.payload
         state.isLoading = false

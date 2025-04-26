@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { HistoryItem } from 'shared/api/history'
+import { userSignedOut } from 'shared/lib/redux'
 
 import { getHistory } from './operations'
 
@@ -25,12 +26,10 @@ export const slice = createSlice({
         i => i.timestamp !== action.payload
       )
     },
-    userSignedOut() {
-      return initialState
-    },
   },
   extraReducers(builder) {
     builder
+      .addCase(userSignedOut, () => initialState)
       .addCase(getHistory.fulfilled, (state, action) => {
         state.items = action.payload
         state.isLoading = false

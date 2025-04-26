@@ -1,6 +1,5 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
 import { historyModel } from 'entities/history'
-import { userModel } from 'entities/user'
 import { historyAPI } from 'shared/api/history'
 
 export const historyMiddleware = createListenerMiddleware()
@@ -22,12 +21,5 @@ historyMiddleware.startListening({
     const userId: string = state.user.info.id
 
     historyAPI.remove(action.payload, userId)
-  },
-})
-
-historyMiddleware.startListening({
-  actionCreator: userModel.operations.signout.fulfilled,
-  effect: async (_, api) => {
-    api.dispatch(historyModel.actions.userSignedOut())
   },
 })
