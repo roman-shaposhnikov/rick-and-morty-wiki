@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { authValidator } from '../../../dataValidator'
 import { AuthForm } from './form'
 
 const meta = {
@@ -23,6 +24,8 @@ export const SigninForm: Story = {
     bottomInputType: 'password',
 
     buttonText: 'Sign In',
+
+    formValidator: authValidator.credentials,
   },
 }
 
@@ -35,5 +38,7 @@ export const SignupForm: Story = {
     bottomInputType: 'text',
 
     buttonText: 'Sign Up',
+
+    formValidator: authValidator.credentials,
   },
 }
