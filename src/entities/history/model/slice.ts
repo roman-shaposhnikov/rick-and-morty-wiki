@@ -25,6 +25,9 @@ export const slice = createSlice({
         i => i.timestamp !== action.payload
       )
     },
+    userSignedOut() {
+      return initialState
+    },
   },
   extraReducers(builder) {
     builder

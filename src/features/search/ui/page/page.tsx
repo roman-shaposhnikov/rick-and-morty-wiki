@@ -20,11 +20,7 @@ export function Page(props: Props) {
   let content
 
   if (isFetching) {
-    content = (
-      <div className='absCentered'>
-        <Loader />
-      </div>
-    )
+    content = <Loader />
   } else if (isError) {
     content = <h3>Nothing matching was found</h3>
   } else {
