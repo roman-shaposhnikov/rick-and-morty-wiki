@@ -4,15 +4,18 @@ import { signupCli } from 'features/signup'
 
 import { dispatch } from './providers/store'
 
-function configureCli(...mixins: unknown[]): Cli {
-  const cli = Object.create({ dispatch })
+function configureCli(
+  prototype: object,
+  ...mixins: unknown[]
+): Cli & Record<string, any> {
+  const cli = Object.create(prototype)
 
   return Object.assign(cli, ...mixins)
 }
 
-const appCli = {
-  auth: configureCli(signinCli, signupCli, signoutCli),
-}
+const appCli = configureCli({ dispatch })
+
+appCli.auth = configureCli(appCli, signinCli, signupCli, signoutCli)
 
 export type AppCli = typeof appCli
 
