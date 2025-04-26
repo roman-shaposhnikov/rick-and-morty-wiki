@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 export const withAuthentication =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (Component: FC<any>) => (props: any) => {
     const isSignedIn = useSelector(userModel.selectors.isSignedIn)
 

@@ -89,6 +89,10 @@ export interface ResponseInfo {
   prev: string | null
 }
 
+export interface ResponseError {
+  error: string
+}
+
 export interface Info<T> {
   /**
    * The API will automatically paginate the responses. You will receive up to `20` documents per page.

@@ -2,6 +2,7 @@
 
 import { characterApi } from 'entities/character'
 import { favoritesModel } from 'entities/favorites'
+import { isRTKQResponseError } from 'shared/lib/redux'
 
 export async function show(this: Cli) {
   const favoritesIds = favoritesModel.selectors.favoritesIds(
@@ -14,7 +15,11 @@ export async function show(this: Cli) {
     ).unwrap()
 
     console.log(favorites)
-  } catch (err: any) {
-    console.log(err.data.error!)
+  } catch (err) {
+    if (isRTKQResponseError(err)) {
+      console.log(err.data.error)
+    } else {
+      console.log(err)
+    }
   }
 }

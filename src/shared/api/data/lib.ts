@@ -1,4 +1,4 @@
-import { ResponseInfo } from './interfaces'
+import { ResponseError, ResponseInfo } from './interfaces'
 
 export function selectCurrentPage(info: ResponseInfo): number {
   if (info.next) {
@@ -8,4 +8,8 @@ export function selectCurrentPage(info: ResponseInfo): number {
   }
 
   return info.pages
+}
+
+export function isResponseError(obj: unknown): obj is ResponseError {
+  return typeof obj === 'object' && obj !== null && 'error' in obj
 }

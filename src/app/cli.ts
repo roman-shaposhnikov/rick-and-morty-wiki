@@ -11,7 +11,7 @@ import { dispatch, getState } from './providers/store'
 function configureCli(
   prototype: object,
   ...mixins: unknown[]
-): Cli & Record<string, any> {
+): Cli & Record<string, object> {
   const cli = Object.create(prototype)
 
   return Object.assign(cli, ...mixins)

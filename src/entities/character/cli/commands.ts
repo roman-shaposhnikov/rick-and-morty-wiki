@@ -2,6 +2,7 @@
 
 import { episodeApi, EpisodeInfo } from 'entities/episode'
 import { Character, selectCurrentPage } from 'shared/api/data'
+import { isRTKQResponseError } from 'shared/lib/redux'
 
 import { characterApi } from '../api'
 
@@ -21,8 +22,12 @@ export async function show(this: Cli, id: number) {
     ).unwrap()
 
     printEpisodesToConsole(episodes)
-  } catch (err: any) {
-    console.log(err.data.error!)
+  } catch (err) {
+    if (isRTKQResponseError(err)) {
+      console.log(err.data.error)
+    } else {
+      console.log(err)
+    }
   }
 }
 
@@ -39,8 +44,12 @@ export async function showAll(this: Cli, page: number = 1) {
     })
 
     printCharacterListToConsole(characters)
-  } catch (err: any) {
-    console.log(err.data.error!)
+  } catch (err) {
+    if (isRTKQResponseError(err)) {
+      console.log(err.data.error)
+    } else {
+      console.log(err)
+    }
   }
 }
 

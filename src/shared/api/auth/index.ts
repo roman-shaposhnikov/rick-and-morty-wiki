@@ -2,6 +2,7 @@ import { AuthAPI } from './interfaces'
 
 export { USER_NOT_REGISTERED, USER_SHOULD_SIGNOUT } from './errors'
 export type { Credentials, User } from './interfaces'
+export { isAuthError } from './lib'
 
 export const authAPI: AuthAPI = await (async () => {
   switch (import.meta.env.VITE_REMOTE_STORE) {

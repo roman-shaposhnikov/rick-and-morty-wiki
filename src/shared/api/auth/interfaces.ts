@@ -13,6 +13,11 @@ export interface UserStatus {
   id: string
 }
 
+export interface AuthError {
+  name: string
+  message: string
+}
+
 type Authenticate = (creds: Credentials) => Promise<User>
 
 type SignIn = Authenticate
