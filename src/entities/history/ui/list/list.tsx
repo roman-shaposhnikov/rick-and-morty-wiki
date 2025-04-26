@@ -1,15 +1,12 @@
-import { historyModel } from 'entities/history'
-import { useSelector } from 'react-redux'
+import { HistoryItem } from 'shared/api/history'
 
 import { Item } from '../item'
 import s from './style.module.css'
 
-export function List() {
-  const history = useSelector(historyModel.selectors.history)
-
+export function List({ items }: { items: HistoryItem[] }) {
   return (
     <ul className={s.list}>
-      {history.map(i => (
+      {items.map(i => (
         <Item key={i.timestamp} {...i} />
       ))}
     </ul>
