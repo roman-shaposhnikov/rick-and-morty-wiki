@@ -67,9 +67,6 @@ export const api = createApi({
         url: `/`,
         params: query,
       }),
-      transformErrorResponse: () => {
-        return TEMPLATE_INFO
-      },
     }),
   }),
 })
