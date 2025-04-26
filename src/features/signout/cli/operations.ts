@@ -5,9 +5,7 @@ export async function signout() {
   const { dispatch } = window.__store__
 
   try {
-    const user = await dispatch(
-      userModel.operations.signout()
-    ).unwrap()
+    await dispatch(userModel.operations.signout()).unwrap()
   } catch (err) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
