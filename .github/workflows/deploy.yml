@@ -41,6 +41,14 @@ jobs:
           path: ~/.npm
           key: node-modules-${{hashFiles('yarn.lock')}}
 
+      - name: Set Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Install dependencies
+        run: yarn install
+
       - name: Build app
         run: yarn build --profile
       - name: Fix permissions
@@ -73,6 +81,14 @@ jobs:
         with:
           path: ~/.npm
           key: node-modules-${{hashFiles('yarn.lock')}}
+
+      - name: Set Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Deploy to GitHub Pages
         id: deployment
