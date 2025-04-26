@@ -1,20 +1,15 @@
-import { FC } from 'react'
 import { Provider } from 'react-redux'
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { withContext } from 'app/hocs/withContext'
 
 export const store = configureStore({
   reducer: combineReducers({}),
 })
 
+export type Store = typeof store
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
-window.__store__ = store
+export const withStore = withContext(Provider, { store })
 
-export function withStore(Component: FC<any>): FC<any> {
-  return (props: any) => (
-    <Provider store={store}>
-      <Component {...props} />
-    </Provider>
-  )
-}
+window.__store__ = store
