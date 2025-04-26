@@ -64,7 +64,30 @@
 - [x] **Feature Flags.** Реализовать фичу “Поделиться в телеграм”, закрытую под фича флагом | [server](https://github.com/roman-dector/rick-and-morty-wiki/blob/main/feature-server/server.js), [getFlags](https://github.com/roman-dector/rick-and-morty-wiki/blob/main/src/shared/api/feature-flags/api.ts), [CharacterCard widget](https://github.com/roman-dector/rick-and-morty-wiki/blob/main/src/widgets/character-card/ui/card.tsx)
 - [ ] ~~Добавить **тесты** через jest, react-testing-library или Playwright~~
 - [x] Связь UI и бизнес-логики построена не через команды, а через **события**
-- [x] **Project Console API [за этот пункт можно заработать весомое кол-во доп. баллов]**
+- [x] **Project Console API**:
+
+  Для работы с приложение через консоль браузера существует глобальный объект `appCli`:
+
+```typescript
+    appCli: {
+      auth: {
+        signin(creds: {username: string, password: string})
+        signup(creds: {username: string, password: string})
+        signout()
+      }
+      character: {
+        show(id: number)
+        showAll()
+      }
+      favorites: {
+        add(id: number)
+        remove(id: number)
+        show()
+      }
+      search(name: string, page: number = 1)
+    }
+
+```
 
 ### Дополнительно
 
