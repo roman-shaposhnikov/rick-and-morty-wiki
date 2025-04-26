@@ -2,7 +2,7 @@ import {
   UserNotRegisteredError,
   UserShouldSignoutError,
 } from '../errors'
-import { Credentials } from '../interfaces'
+import { Credentials, User, UserStatus } from '../interfaces'
 import { createUserWithCreds } from '../lib'
 import {
   addUser,
@@ -12,7 +12,7 @@ import {
   shouldSignout,
 } from './lib'
 
-export async function signin(creds: Credentials) {
+export async function signin(creds: Credentials): Promise<User> {
   if (shouldSignout()) {
     throw new UserShouldSignoutError()
   }
@@ -28,7 +28,7 @@ export async function signin(creds: Credentials) {
   return user
 }
 
-export async function signup(creds: Credentials) {
+export async function signup(creds: Credentials): Promise<User> {
   if (shouldSignout()) {
     throw new UserShouldSignoutError()
   }
@@ -48,10 +48,10 @@ export async function signup(creds: Credentials) {
   return newUser
 }
 
-export async function signout() {
+export async function signout(): Promise<void> {
   setCurrentUserId('')
 }
 
-export async function getUserStatus() {
+export async function getUserStatus(): Promise<UserStatus> {
   return { isSignedIn: shouldSignout(), id: getCurrentUserId() }
 }
