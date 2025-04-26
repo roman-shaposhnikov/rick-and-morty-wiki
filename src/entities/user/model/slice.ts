@@ -1,6 +1,6 @@
 import { createSlice, SerializedError } from '@reduxjs/toolkit'
 
-import { signin, signout, signup } from './operations'
+import { init, signin, signout, signup } from './operations'
 
 interface CurrentUser {
   type: 'guest' | 'user'
@@ -36,5 +36,11 @@ export const slice = createSlice({
         state.info.id = action.payload.id
       })
       .addCase(signout.fulfilled, () => initialState)
+      .addCase(init.fulfilled, (state, action) => {
+        if (!action.payload.result) {
+          state.type = 'user'
+          state.info.id = action.payload.id
+        }
+      })
   },
 })
