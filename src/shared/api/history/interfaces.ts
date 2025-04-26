@@ -1,5 +1,5 @@
 export interface Item {
-  query: Record<string, string>
+  query: Record<string, string | number>
   timestamp: number
 }
 

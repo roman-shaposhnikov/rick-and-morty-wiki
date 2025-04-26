@@ -5,17 +5,21 @@ import { selectCurrentPage } from 'shared/api/data'
 
 export async function search(
   this: Cli,
-  query: Record<string, string>
+  name: string,
+  page: number = 1
 ) {
   this.dispatch(
     historyModel.actions.searchRequest({
-      query: { name: query.name },
+      query: { name, page },
       timestamp: Date.now(),
     })
   )
 
   this.dispatch(
-    characterApi.endpoints.getMatchingCharacters.initiate(query)
+    characterApi.endpoints.getMatchingCharacters.initiate({
+      name,
+      page,
+    })
   )
     .unwrap()
     .then(({ info, results }) => {

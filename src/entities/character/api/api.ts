@@ -79,7 +79,7 @@ export const api = createApi({
     }),
     getMatchingCharacters: build.query<
       Info<Character[]>,
-      Record<string, string>
+      Record<string, string | number>
     >({
       query: query => ({
         url: `/`,
