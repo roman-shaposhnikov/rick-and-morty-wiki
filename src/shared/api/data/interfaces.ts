@@ -10,35 +10,6 @@ export interface ResourceBase {
   created: string
 }
 
-export interface Endpoints {
-  character: string
-  location: string
-  episode: string
-}
-
-export interface CharacterFilter {
-  name?: string
-  type?: string
-  species?: string
-  status?: 'Dead' | 'Alive' | 'unknown'
-  gender?: 'Female' | 'Male' | 'Genderless' | 'unknown'
-  page?: number
-}
-
-export interface LocationFilter
-  extends Pick<CharacterFilter, 'name' | 'type' | 'page'> {
-  dimension?: string
-}
-
-export interface EpisodeFilter
-  extends Pick<CharacterFilter, 'name' | 'page'> {
-  /**
-   * Filter by the given episode code.
-   * i.e: `{ episode: "S01E01" }`
-   */
-  episode?: string
-}
-
 export type CharacterStatus = 'Dead' | 'Alive' | 'unknown'
 export type CharacterGender =
   | 'Female'

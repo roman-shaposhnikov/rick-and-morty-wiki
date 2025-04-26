@@ -1,8 +1,11 @@
 /* eslint-disable no-console */
 
 import { episodeApi, EpisodeInfo } from 'entities/episode'
-import { Character, selectCurrentPage } from 'shared/api/data'
-import { isRTKQResponseError } from 'shared/lib/redux'
+import {
+  Character,
+  isApiResponseError,
+  selectCurrentPage,
+} from 'shared/api/data'
 
 import { characterApi } from '../api'
 
@@ -23,7 +26,7 @@ export async function show(this: Cli, id: number) {
 
     printEpisodesToConsole(episodes)
   } catch (err) {
-    if (isRTKQResponseError(err)) {
+    if (isApiResponseError(err)) {
       console.log(err.data.error)
     } else {
       console.log(err)
@@ -45,7 +48,7 @@ export async function showAll(this: Cli, page: number = 1) {
 
     printCharacterListToConsole(characters)
   } catch (err) {
-    if (isRTKQResponseError(err)) {
+    if (isApiResponseError(err)) {
       console.log(err.data.error)
     } else {
       console.log(err)
