@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.main h3 {
+  text-align: center;
+}
+
+.link {
+  background-color: #69ffff;
+  border-radius: 0.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+}
