@@ -8,6 +8,6 @@ export const signin = createAppThunk<Credentials, User>(
   }
 )
 
-export const signout = createAppThunk('user/signin', async () => {
+export const signout = createAppThunk('user/signout', async () => {
   return await authAPI.signout()
 })
