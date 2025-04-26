@@ -5,7 +5,7 @@ import { FC } from 'react'
 // TS Error: Type 'unknown' is not assignable to type 'IntrinsicAttributes'.ts(2322)
 export const withContext =
   (Provider: FC<any>, options: any) =>
-  (Component: FC<any>) =>
+  (Component: FC<any>): FC<any> =>
   (props: any) =>
     (
       <Provider {...options}>
