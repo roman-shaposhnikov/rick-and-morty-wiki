@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Character } from 'shared/api/data'
 
 import { Status } from '../status'
@@ -13,16 +13,20 @@ export function Card({
   info,
   children,
 }: Props & { children: ReactNode }) {
+  const navigate = useNavigate()
   return (
-    <article className={s.wrapper}>
+    <article
+      className={s.wrapper}
+      onClick={() => {
+        navigate(`/character/${info.id}`)
+      }}
+    >
       <img src={info.image} alt={info.name} />
 
       <div className={s.content}>
         <div className={s.info}>
           <div className={s.section}>
-            <Link to={`/character/${info.id}`}>
-              <h2>{info.name}</h2>
-            </Link>
+            <h2 className={s.name}>{info.name}</h2>
             <Status status={info.status} species={info.species} />
           </div>
 
@@ -32,7 +36,16 @@ export function Card({
           </div>
         </div>
 
-        {children ? <ul className={s.actions}>{children}</ul> : null}
+        {children ? (
+          <ul
+            className={s.actions}
+            onClick={e => {
+              e.stopPropagation()
+            }}
+          >
+            {children}
+          </ul>
+        ) : null}
       </div>
     </article>
   )

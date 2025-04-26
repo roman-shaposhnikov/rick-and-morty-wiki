@@ -8,19 +8,21 @@
   margin: 0.75rem;
 
   color: var(--text-color);
+  cursor: pointer;
 }
 
-.wrapper > a {
-  text-decoration: none;
-  color: inherit;
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-.wrapper > a:hover {
+.name:hover {
   text-decoration: underline;
   color: var(--text-color-highlight);
 }
 
 .content {
+  width: 300px;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
